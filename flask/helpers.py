@@ -807,14 +807,13 @@ class locked_cached_property(object):
 class _PackageBoundObject(object):
 
     def __init__(self, import_name, template_folder=None, root_path=None):
-        #: The name of the package or module.  Do not change this once
-        #: it was set by the constructor.
+        # import_name 通过构造函数实现
         self.import_name = import_name
 
         #: location of the templates.  ``None`` if templates should not be
         #: exposed.
         self.template_folder = template_folder
-
+        # 判断 root_path 时候是否为空，如果为空的时候默认使用 传入的import_name 获取对应的文件路径
         if root_path is None:
             root_path = get_root_path(self.import_name)
 

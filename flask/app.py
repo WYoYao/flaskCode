@@ -341,6 +341,7 @@ class Flask(_PackageBoundObject):
                  static_folder='static', template_folder='templates',
                  instance_path=None, instance_relative_config=False,
                  root_path=None):
+        # Flask 创建实例的时候还创建了 _PackageBoundObject 类型，同时将其是实例化
         _PackageBoundObject.__init__(self, import_name,
                                      template_folder=template_folder,
                                      root_path=root_path)
@@ -353,6 +354,7 @@ class Flask(_PackageBoundObject):
         if static_url_path is not None:
             self.static_url_path = static_url_path
         if static_folder is not None:
+            # 默认的地址静态文件目录
             self.static_folder = static_folder
         if instance_path is None:
             instance_path = self.auto_find_instance_path()
